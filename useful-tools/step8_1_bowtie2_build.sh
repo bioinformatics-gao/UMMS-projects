@@ -1,0 +1,2 @@
+#samtools faidx wt_ref_corrected_by_reads.fa
+bowtie2-build wt_ref_corrected_by_reads.fa wt_ref_corrected_by_reads
