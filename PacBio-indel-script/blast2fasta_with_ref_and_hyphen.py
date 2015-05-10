@@ -15,15 +15,17 @@ def main():
         print('>'+ block_name[i]+'\n')
 	
         queryparagraph=''
-        re_pattern=re.compile('C-*C-*A-*C-*T-*G-*C-*A-*T-*C-*C-*T-*G-*G-*G-*G-*A')
+        re_pattern1=re.compile('C-*C-*A-*C-*T-*G-*C-*A-*T-*C-*C-*T-*G-*G-*G-*G-*A')
+        re_pattern2=re.compile('G-*A-*C-*G-*A-*T-*G-*C-*C-*A-*T-*T-*G-*G-*G-*C[ATCG-]*A-*G-*A-*C-*A-*A-*C-*T-*A-*A-*A-*C-*T-*A-*A')
         for k in range(5,len(lines)):
             if  re.search('Query', lines[k]):
                 lines[k]=lines[k].strip('Query') 
                 lines[k]= ''.join(m for m in lines[k] if not m.isdigit())
                 lines[k]=lines[k].strip() 
                 queryparagraph+=(lines[k])
-        m= re.search(re_pattern, queryparagraph)
-        if m==None:
+        m= re.search(re_pattern1, queryparagraph)
+        n= re.search(re_pattern2, queryparagraph)
+        if m==None or n==None:
  	    continue
 
         subparagraph=''
