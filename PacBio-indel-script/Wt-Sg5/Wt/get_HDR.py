@@ -11,8 +11,8 @@ def main():
     down_changed_file=open('Wt_with_down_changed.fasta','w') 
     both_changed_file=open('Wt_with_both_changed.fasta','w')
     unidentified_file=open('Wt_unidentified.fasta','w')
-	
-    up_pattern  =re.compile('C-*C-*T-*G-*G-*G-*G-*A-*T-*C-*C')
+
+    up_pattern  =re.compile('T-*G-*T-*A-*C-*C-*A-*T-*G-*T-*A')
     down_pattern=re.compile('G-*A-*A-*C-*G-*A-*G-*G-*C-*G-*G')
     
     block_name=['']*len(data_blocks) 
@@ -27,16 +27,18 @@ def main():
 	n=re.search(down_pattern,lines[2])
         if m!=None and n!=None:
             target1=m.group()
-            sub1= re.search('G-*G-*G-*A',  target1)
+            sub1= re.search('C-*A-*T-*G',  target1)
 	    up_core_position=m.start()+sub1.start()
             target2=n.group()
             sub2= re.search('A-*G-*G-*C',  target2)
 	    down_core_position=n.start()+sub2.start()
-			
-            if lines[4][up_core_position]=='G' and lines[4][down_core_position]=='A':
+	    print(lines[2][up_core_position])
+	    print(lines[2][down_core_position])
+	
+            if lines[4][up_core_position]=='C' and lines[4][down_core_position]=='A':
 		unchanged_file.write('>'+ paragraph)
 
-	    elif lines[4][up_core_position]!='G' and lines[4][down_core_position]=='A':
+	    elif lines[4][up_core_position]!='C' and lines[4][down_core_position]=='A':
 		up_changed_file.write('>'+ paragraph)
                 up_nt= lines[4][up_core_position]
                 if up_nt not in up_accumulated_for_each_nt:
@@ -44,7 +46,7 @@ def main():
 	        else:
 	            up_accumulated_for_each_nt[up_nt]+=1
  
-	    elif lines[4][up_core_position]=='G' and lines[4][down_core_position]!='A':
+	    elif lines[4][up_core_position]=='C' and lines[4][down_core_position]!='A':
 		down_changed_file.write('>'+ paragraph)
                 down_nt= lines[4][down_core_position]
                 if down_nt not in down_accumulated_for_each_nt:
@@ -52,12 +54,12 @@ def main():
                 else:
                     down_accumulated_for_each_nt[down_nt]+=1
  
-            elif lines[4][up_core_position]!='G' and lines[4][down_core_position]!='A':
+            elif lines[4][up_core_position]!='C' and lines[4][down_core_position]!='A':
 		both_changed_file.write('>'+ paragraph)
 	    else:
 	        unidentified_file.write('>'+ paragraph) 
 
-    outfile = open('Wt_HDR_count.txt', 'a+' )
+    outfile = open('Wt_HDR_count.txt', 'w' )
     outfile.write( 'The up_stream_changes:\n' )
     for key, value in up_accumulated_for_each_nt.items():
         outfile.write( str(key) + '\t' + str(value) +'\n' )

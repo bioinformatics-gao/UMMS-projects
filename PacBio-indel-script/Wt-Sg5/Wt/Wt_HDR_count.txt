@@ -1,7 +1,6 @@
 The up_stream_changes:
-A	1
--	1
-T	4
+A	3
+-	17
 The down_stream_changes:
 C	1
 G	2

@@ -1,12 +1,12 @@
 import re
 def main():
     
-    sourcefile = open('Wt_blast_pure.blast') # source file 
+    sourcefile = open('Sg5_blast_pure.blast') # source file 
     data=sourcefile.read()
     sourcefile.close()
     data_blocks=data.split('>')
     
-    single_hit_file=open('Wt_single_hit.blast','w') 
+    single_hit_file=open('Sg5_single_hit.blast','w') 
     block_name=['']*len(data_blocks)    
 
     for i in range(1,len(data_blocks)):

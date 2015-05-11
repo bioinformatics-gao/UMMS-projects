@@ -1,11 +1,11 @@
 import re
 def main():
     
-    sourcefile = open('Wt_single_hit.blast') # source file 
+    sourcefile = open('Sg5_single_hit.blast') # source file 
     data=sourcefile.read()
     sourcefile.close()
     data_blocks=data.split('>')
-    single_hit_fasta_file=open('Wt_single_hit_with_query_and_hyphen.fasta','w') 
+    single_hit_fasta_file=open('Sg5_single_hit_with_query_and_hyphen.fasta','w') 
     block_name=['']*len(data_blocks)    
 
     for i in range(1,len(data_blocks)):

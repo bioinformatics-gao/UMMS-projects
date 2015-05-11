@@ -14,9 +14,9 @@ def remove_dup_seqs(records):
 
 #records = remove_dup_seqs(SeqIO.parse("Sg2.fasta", "fasta"))
 #count = SeqIO.write(records, "Sg2_no_repeated_seq.fasta", "fasta")
-#records = remove_dup_seqs(SeqIO.parse("Sg5.fasta", "fasta"))
-#count = SeqIO.write(records, "Sg5_no_repeated_seq.fasta", "fasta")
-records = remove_dup_seqs(SeqIO.parse("Wt.fasta", "fasta"))
-count = SeqIO.write(records, "Wt_no_repeat.fasta", "fasta")
+records = remove_dup_seqs(SeqIO.parse("Sg5.fasta", "fasta"))
+count = SeqIO.write(records, "Sg5_no_repeated_seq.fasta", "fasta")
+#records = remove_dup_seqs(SeqIO.parse("Wt.fasta", "fasta"))
+#count = SeqIO.write(records, "Wt_no_repeat.fasta", "fasta")
 print "Saved %i records" % count
 
