@@ -1,9 +1,0 @@
-The up_stream_changes:
-A	8
-C	3
--	597
-T	7
-The down_stream_changes:
--	2
-T	1
-G	5
